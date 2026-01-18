@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 from bs4 import BeautifulSoup
 
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 # === CONFIG ===
 PYTHON = "/opt/homebrew/bin/python3.9"
 DEVICE = "Android://127.0.0.1:5037/R5CW20A8NQJ"
