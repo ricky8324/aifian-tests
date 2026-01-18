@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 # === CONFIG ===
-PYTHON = "/opt/homebrew/bin/python3.9"
+PYTHON = sys.executable
 DEVICE = "Android://127.0.0.1:5037/R5CW20A8NQJ"
 TEST_ROOT = "repository/mobile/tests"
 # MODULES = ["account", "auth", "login", "message-hub", "portfolio", "rewards"]  # 模組依需求增減
