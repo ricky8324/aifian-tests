@@ -1,0 +1,52 @@
+name: Staging E2E Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      module:
+        description: "Target module for testing"
+        required: true
+        type: choice
+        options:
+          - aifian-api
+          - aifian-async
+  workflow_call:
+    inputs:
+      module:
+        description: "Target module for testing"
+        required: true
+        type: string
+
+jobs:
+  staging-e2e-tests:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    environment: staging
+    container:
+      # Image version need to meet playwright version in package.json
+      image: mcr.microsoft.com/playwright:v1.46.1-jammy
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: aifian-dev/aifian-tests
+          token: ${{ secrets.GH_ACCESS_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+      - name: Install dependencies
+        run: yarn install --immutable
+      - name: Run playwright tests
+        run: |
+          QASE_MODE=testops \
+          QASE_TESTOPS_RUN_TITLE="aifian-test - $(date -u -d '+8 hour' '+%Y-%m-%d %H:%M:%S')" \
+          npx playwright test -c repository/${{ inputs.module }}/playwright.config.ts
+        env:
+          HOME: /root
+          ENV: ${{ vars.ENV }}
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report-${{ inputs.module }}
+          path: playwright-report/
+          retention-days: 60

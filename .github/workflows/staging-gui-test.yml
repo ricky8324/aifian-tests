@@ -1,0 +1,35 @@
+name: Staging GUI Tests
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'repository/mobile/tests/**'
+
+jobs:
+  staging-gui-tests:
+    runs-on: [self-hosted, aifian_qa]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Run Airtest Modules
+        run: |
+          /opt/homebrew/bin/python3.9 script/run_airtest_modules.py
+     
+      - name: Notify Slack if test failed
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          /opt/homebrew/bin/python3.9 script/report_and_notify.py
+          
+      - name: Upload report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: airtest-report
+          path: airtest-report.zip

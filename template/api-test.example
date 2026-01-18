@@ -1,0 +1,27 @@
+import { expect, test as base, APIRequestContext } from "@playwright/test";
+import { createAuthRequestFixture } from "../../fixtures/auth-request";
+import { userRole, urlPaths } from "../../constant";
+import { AuthHelper } from "../../helpers/api/auth-helper";
+import { TokenManager } from "repository/aifian-api/utils/token-manager";
+import { baseRequestFixture } from 'repository/aifian-api/fixtures/base-request';
+
+const tokenManager = new TokenManager();
+
+const test = base.extend<{
+  request: APIRequestContext;
+  authRequest: APIRequestContext;
+}>({
+  request: baseRequestFixture,
+  authRequest: createAuthRequestFixture(userRole[214919].mobile, tokenManager),
+});
+
+test.beforeAll(async ({ request }) => {
+  const authHelper = new AuthHelper(request, tokenManager);
+  await authHelper.signIn(userRole[214919]);
+});
+
+test.describe("test-group-description", () => {
+  test("test-case-description", async ({ authRequest }) => {
+    // add your test here
+  });
+});
