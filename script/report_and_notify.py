@@ -4,6 +4,9 @@ import json
 import requests
 import sys
 import glob
+import io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 SLACK_WEBHOOK = os.getenv("SLACK_WEBHOOK")
 REPORT_BASE = "airtest-report"
