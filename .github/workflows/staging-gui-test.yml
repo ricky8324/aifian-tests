@@ -25,7 +25,7 @@ jobs:
           GITHUB_RUN_ID: ${{ github.run_id }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          /opt/homebrew/bin/python3.9 script/report_and_notify.py
+          python script/run_airtest_modules.py
           
       - name: Upload report as artifact
         if: always()
