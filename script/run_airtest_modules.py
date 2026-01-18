@@ -6,9 +6,10 @@ from bs4 import BeautifulSoup
 
 # === CONFIG ===
 PYTHON = "/opt/homebrew/bin/python3.9"
-DEVICE = "Android://127.0.0.1:5037/56260DLAQ002BW"
+DEVICE = "Android://127.0.0.1:5037/R5CW20A8NQJ"
 TEST_ROOT = "repository/mobile/tests"
-MODULES = ["account", "auth", "login", "message-hub", "portfolio", "rewards"]  # 模組依需求增減
+# MODULES = ["account", "auth", "login", "message-hub", "portfolio", "rewards"]  # 模組依需求增減
+MODULES = ["portfolio"]
 
 # === MAIN ===
 def run_airtest_module(module_name):
