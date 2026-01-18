@@ -7,28 +7,28 @@ from airtest.report.report import simple_report
 poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
 auto_setup(__file__)
 
-adb = device().adb
-adb.shell("pm clear com.adenovo.aifianstg")
+#adb = device().adb
+#adb.shell("pm clear com.adenovo.aifianstg")
 
-stop_app("com.adenovo.aifianstg")
-start_app("com.adenovo.aifianstg")
+stop_app("com.adenovo.aifian")
+start_app("com.adenovo.aifian")
 sleep(8)
 
 # 帳號登入
-poco("android.widget.EditText").set_text("900752434")
-poco(text="使用手機繼續").click()
+#poco("android.widget.EditText").set_text("900752434")
+#poco(text="使用手機繼續").click()
 sleep(3)
 # 輸入驗証碼，為了相容 RN 跟 AN 的自動化
-text("1")
-text("2")
-text("3")
-text("4")
-text("5")
-text("6")
-sleep(3)
+#text("1")
+#text("2")
+#text("3")
+#text("4")
+#text("5")
+#text("6")
+#sleep(3)
 
-poco("android.widget.EditText").set_text("Bella005")
-poco(text="登入").click()
+#poco("android.widget.EditText").set_text("Bella005")
+#poco(text="登入").click()
 sleep(3)
 
 if poco(text="允許").exists():
@@ -93,18 +93,18 @@ try:
 except Exception as e:
     log(e, snapshot=True)
 
-touch(Template(r"tpl1756798271104.png", record_pos=(-0.005, 0.797), resolution=(1080, 2400)))
-sleep(3)
+#touch(Template(r"tpl1756798271104.png", record_pos=(-0.005, 0.797), resolution=(1080, 2400)))
+#sleep(3)
 
-touch(Template(r"tpl1756794548654.png", record_pos=(-0.132, 0.239), resolution=(1080, 2400)))
+#touch(Template(r"tpl1756794548654.png", record_pos=(-0.132, 0.239), resolution=(1080, 2400)))
 
-poco(text="繼續").click()
-sleep(3)
+#poco(text="繼續").click()
+#sleep(3)
 
-touch(Template(r"tpl1764747121394.png", record_pos=(-0.004, 0.889), resolution=(1080, 2424)))
-sleep(15)
+#touch(Template(r"tpl1764747121394.png", record_pos=(-0.004, 0.889), resolution=(1080, 2424)))
+#sleep(15)
 
-try:
-    assert_equal(poco(text="已成功送出訂單").exists(), True, "確認使用回饋購買智能選品，最終導到\"已成功送出訂單\"頁面")
-except Exception as e:
-    log(e, snapshot=True)
+#try:
+#    assert_equal(poco(text="已成功送出訂單").exists(), True, "確認使用回饋購買智能選品，最終導到\"已成功送出訂單\"頁面")
+#except Exception as e:
+#    log(e, snapshot=True)
