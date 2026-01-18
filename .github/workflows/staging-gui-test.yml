@@ -17,7 +17,7 @@ jobs:
 
       - name: Run Airtest Modules
         run: |
-          /opt/homebrew/bin/python3.9 script/run_airtest_modules.py
+          python script/run_airtest_modules.py
      
       - name: Notify Slack if test failed
         env:
