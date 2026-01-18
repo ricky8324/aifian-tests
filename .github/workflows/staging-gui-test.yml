@@ -8,7 +8,7 @@ on:
 
 jobs:
   staging-gui-tests:
-    runs-on: [self-hosted, aifian_qa]
+    runs-on: [self-hosted, qa]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
