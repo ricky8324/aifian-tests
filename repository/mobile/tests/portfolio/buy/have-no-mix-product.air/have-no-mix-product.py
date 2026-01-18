@@ -7,28 +7,28 @@ from airtest.report.report import simple_report
 poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
 auto_setup(__file__)
 
-adb = device().adb
-adb.shell("pm clear com.adenovo.aifianstg")
+#adb = device().adb
+#adb.shell("pm clear com.adenovo.aifianstg")
 
-stop_app("com.adenovo.aifianstg")
-start_app("com.adenovo.aifianstg")
+stop_app("com.adenovo.aifian")
+start_app("com.adenovo.aifian")
 sleep(8)
 
 # 帳號登入
-poco("android.widget.EditText").set_text("906060606")
-poco(text="使用手機繼續").click()
-sleep(3)
+#poco("android.widget.EditText").set_text("906060606")
+#poco(text="使用手機繼續").click()
+#sleep(3)
 # 輸入驗証碼，為了相容 RN 跟 AN 的自動化
-text("1")
-text("2")
-text("3")
-text("4")
-text("5")
-text("6")
-sleep(3)
+#text("1")
+#text("2")
+#text("3")
+#text("4")
+#text("5")
+#text("6")
+#sleep(3)
 
-poco("android.widget.EditText").set_text("@Ss8654092")
-poco(text="登入").click()
+#poco("android.widget.EditText").set_text("@Ss8654092")
+#poco(text="登入").click()
 sleep(3)
 
 if poco(text="允許").exists():
