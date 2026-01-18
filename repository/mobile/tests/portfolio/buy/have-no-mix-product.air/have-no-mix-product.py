@@ -29,15 +29,15 @@ sleep(8)
 
 #poco("android.widget.EditText").set_text("@Ss8654092")
 #poco(text="登入").click()
-sleep(3)
+#sleep(3)
 
-if poco(text="允許").exists():
-    poco("com.android.permissioncontroller:id/permission_allow_button").click()
-sleep(5)
+#if poco(text="允許").exists():
+#    poco("com.android.permissioncontroller:id/permission_allow_button").click()
+#sleep(5)
 
-if exists(Template(r"tpl1754454689013.png", record_pos=(0.374, -0.549), resolution=(1080, 2400))):
-    touch(Template(r"tpl1754454689013.png", record_pos=(0.374, -0.549), resolution=(1080, 2400)))
-sleep(3)    
+#if exists(Template(r"tpl1754454689013.png", record_pos=(0.374, -0.549), resolution=(1080, 2400))):
+#    touch(Template(r"tpl1754454689013.png", record_pos=(0.374, -0.549), resolution=(1080, 2400)))
+#sleep(3)    
     
 # CASE1: 未持有智能選品
 try:
