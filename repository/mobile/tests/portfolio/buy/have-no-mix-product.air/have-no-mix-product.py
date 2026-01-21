@@ -57,11 +57,24 @@ try:
 except Exception as e:
     log(e, snapshot=True)
 
-swipe(Template(r"tpl1756450306694.png", record_pos=(-0.334, 0.093), resolution=(1080, 2400)), vector=[0.0115, -0.3505])
+#swipe(Template(r"tpl1756450306694.png", record_pos=(-0.334, 0.093), resolution=(1080, 2400)), vector=[0.0115, -0.3505])
 
+#try:
+#    assert_equal(poco(text="回饋計算機").exists(), True, "確認未持有智能選品，細節頁顯示回饋計算機")
+#except Exception as e:
+#    log(e, snapshot=True)
+
+touch(Template(r"tpl1769014434888.png", record_pos=(0.233, 0.93), resolution=(1440, 3088)))
+sleep(5)
+touch(Template(r"tpl1769013348758.png", record_pos=(0.414, -0.638), resolution=(1440, 3088)))
+poco(text="轉帳支付 變更").click()
+touch(Template(r"tpl1769013891151.png", record_pos=(0.001, -0.624), resolution=(1440, 3088)))
+poco(text="新信用卡").click()
+poco(text="確定").click()
+poco(text="繼續").click()
+touch(Template(r"tpl1769014113777.png", record_pos=(-0.002, 0.046), resolution=(1440, 3088)))
+poco(text="下一步 輸入信用卡資訊").click()
 try:
-    assert_equal(poco(text="回饋計算機").exists(), True, "確認未持有智能選品，細節頁顯示回饋計算機")
+    assert_equal(poco(text="輸入信用卡資訊").exists(), True, "確認有導到信用卡輸入頁面")
 except Exception as e:
     log(e, snapshot=True)
-
-
