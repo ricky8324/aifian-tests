@@ -46,6 +46,7 @@ except Exception as e:
     log(e, snapshot=True)
 
 poco(text="智能選品").click()
+sleep(3)
 
 try:
     assert_exists(Template(r"tpl1764839821555.png", record_pos=(-0.358, -0.157), resolution=(1080, 2424)), "確認未持有智能選品，細節頁持有現值為0")
